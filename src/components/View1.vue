@@ -158,7 +158,8 @@ export default {
   },
 
   created() {
-    axios.get('./static/raw-data.json')
+    const baseHref = `${window.location.protocol}//${window.location.host}:${window.location.port}${window.location.pathname}`;
+    axios.get(`${baseHref}/static/raw-data.json`)
       .then((response) => {
         let updated = response.data.map(item => this.addIdentifierToData(item));
         updated = updated.map(item => this.addChick(item));
